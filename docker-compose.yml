@@ -1,0 +1,38 @@
+version: '3.2'
+
+services:
+  mqtt:
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+        ##  - "8883:8883"
+    volumes:
+      - ./docker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    networks:
+      - bbox
+  tgbot:
+    build: ./subscriber/tg_bot
+    networks:
+      - bbox
+  influxdb:
+    image: influxdb
+    ports:
+      - "8086:8086"
+    env_file:
+      - ./docker/environment
+    networks:
+      - bbox
+  telegraf:
+    image: telegraf
+    env_file:
+      - ./docker/environment
+    volumes:
+      - ./docker/telegraf.conf:/etc/telegraf/telegraf.conf
+    links:
+      - influxdb
+      - mqtt
+    networks:
+      - bbox
+networks:
+  bbox:
+    driver: bridge
