@@ -76,6 +76,10 @@ The token as well as the chat id need to be provided in this file `./subscriber/
 An example is provided within this repository, the example extension needs to be removed.
 The Telegram Bot can also be build as a docker container and is contained within the `docker-compose` file.
 
+When setup correctly you should receive messages like this every time your dog barks:
+
+![Tg Bot](./doc/img/tg.png)
+
 ## Admonisher
 
 I could not come up with a better name by now. This subscriber to the MQTT waits for barks. Once one
