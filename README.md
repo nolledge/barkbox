@@ -70,7 +70,7 @@ In order to make this work you need to [create a Telegram Bot](https://core.tele
 
 After you created it, start a chat with it and visit this endpoint to receive the chatId:
 
-https://api.telegram.org/bot<your-token>/getUpdates
+https://api.telegram.org/bot$yourToken/getUpdates ($yourToken needs to be replaced)
 
 The token as well as the chat id need to be provided in this file `./subscriber/tg_bot/keys.json`.
 An example is provided within this repository, the example extension needs to be removed.
